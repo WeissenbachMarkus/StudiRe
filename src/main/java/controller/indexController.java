@@ -27,4 +27,9 @@ public class indexController  implements Serializable{
     public String showStudents( ) {
         return Pages.ALL_STUDENTS;
     }
+    
+    public String doIndex()
+    {
+        return Pages.INDEX;
+    }
 }

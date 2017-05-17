@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data;
+package service;
 
+import data.StudentList;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
@@ -21,12 +22,12 @@ import model.Student;
  * @author markus
  */
 @RequestScoped
-public class StudentProducer implements Serializable {
+public class StudentProducerService implements Serializable {
 
     private Student student;
     private int year, uni, number;
 
-    public StudentProducer() {
+    public StudentProducerService() {
         this.student = new Student();
         this.uni = 30;
         this.number = 313;

@@ -5,7 +5,7 @@
  */
 package controller;
 
-import data.StudentProducer;
+import service.StudentProducer;
 import java.io.Serializable;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
