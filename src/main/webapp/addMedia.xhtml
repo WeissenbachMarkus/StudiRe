@@ -21,12 +21,22 @@
                             <p:message for="a_name" />
 
                             <h:outputLabel value="#{msg['addMedia.type']}:">
-                            </h:outputLabel>
-                            <p:inputText id="a_type" value="#{addMediaController.mediumProducer.medium.type}">
-                                <f:validateRequired />
-                            </p:inputText> 
-                            <p:message for="a_type" />
-                            
+                                 </h:outputLabel>
+                            <h:selectOneMenu id="a_type"
+                                             value="#{addMediaController.mediumProducer.medium.type}">
+                                <f:selectItem itemLabel="CD"
+                                              itemValue="CD" />
+                                <f:selectItem itemLabel="DVD"
+                                              itemValue="DVD" />
+                            </h:selectOneMenu>
+                                 <p:message for="a_type" />
+                                                        <!--<h:outputLabel value="#{msg['addMedia.type']}:">
+                                                        </h:outputLabel>
+                                                        <p:inputText id="a_type" value="#{addMediaController.mediumProducer.medium.type}">
+                                                            <f:validateRequired />
+                                                        </p:inputText> 
+                                                        <p:message for="a_type" />-->
+
                         </h:panelGrid>
 
                         <p:commandButton value="#{msg['addMedia.save']}"
