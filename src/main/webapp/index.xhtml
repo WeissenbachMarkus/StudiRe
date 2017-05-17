@@ -1,5 +1,26 @@
-<html>
-    <head>
-        <meta http-equiv="Refresh" content="0; URL=allMedia.xhtml" ></meta>
-    </head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <body>
+        <f:view contracts="#{view.locale.language}">
+            <ui:composition template="/template.xhtml">
+                <ui:define name="content">
+                    <h1>#{msg['index.header']}</h1>
+                    <h:form>
+                        <h:panelGrid columns="2">
+
+                            <p:commandButton value="#{msg['index.addStudent']}"
+                                             ajax="false" action=
+                                             "#{indexController.addStudent()}" />
+                            <p:commandButton value="#{msg['index.showStudents']}"
+                                             immediate="true" ajax="false"
+                                             action="#{indexController.showStudents}" />
+                        </h:panelGrid>                
+                    </h:form>
+                </ui:define>
+            </ui:composition>
+        </f:view>
+    </body>
 </html>

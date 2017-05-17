@@ -5,13 +5,13 @@
  */
 package controller;
 
-import data.MediumProducer;
+import data.StudentProducer;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
-import model.Medium;
+import model.Student;
 import util.Events.Deleted;
 
 /**
@@ -20,30 +20,27 @@ import util.Events.Deleted;
  */
 @SessionScoped
 @Named
-public class AllMediaController implements Serializable {
+public class AllStudentController implements Serializable {
 
     @Inject
     @Deleted
-    private Event<Medium> deleteMediumEvent;
+    private Event<Student> deleteStudentEvent;
     
-    @Inject
-    MediumProducer mediumProducer;
-    
-    private Medium mediumToDelete;
+    private Student studentToDelete;
 
-    public String addMedium() {
+    public String addStudent() {
         
        // mediumProducer.prepareAdd();
-        return Pages.ADD_MEDIA;
+        return Pages.ADD_STUDENT;
     }
 
-    public String deleteMedium() {
-        deleteMediumEvent.fire(mediumToDelete);
-        return Pages.ALL_MEDIA;
+    public String deleteStudent() {
+        deleteStudentEvent.fire(studentToDelete);
+        return Pages.ALL_STUDENTS;
     }
 
-    public void toDelete(Medium medium) {
-        this.mediumToDelete = medium;
+    public void toDelete(Student student) {
+        this.studentToDelete = student;
     }
 
 }

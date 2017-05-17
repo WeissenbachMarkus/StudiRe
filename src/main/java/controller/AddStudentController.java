@@ -5,14 +5,14 @@
  */
 package controller;
 
-import data.MediumProducer;
+import data.StudentProducer;
 import java.io.Serializable;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
-import model.Medium;
+import model.Student;
 import util.Events.Added;
 
 /**
@@ -21,31 +21,31 @@ import util.Events.Added;
  */
 @Named
 @Dependent
-public class AddMediaController implements Serializable {
+public class AddStudentController implements Serializable {
 
     @Inject
     @Added
-    private Event<Medium> eventMedium;
+    private Event<Student> eventMedium;
 
     @Inject
-    private MediumProducer mediumProducer;
+    private StudentProducer studentProducer;
 
-    public String saveMedium() {
-        eventMedium.fire(mediumProducer.getMedium());
-        return Pages.ALL_MEDIA;
+    public String saveMedium() {       
+        studentProducer.setMatrikelnumber();
+        eventMedium.fire(studentProducer.getStudent());
+        return Pages.INDEX;
     }
 
-    public MediumProducer getMediumProducer() {
-        return mediumProducer;
+    public StudentProducer getStudentProducer() {
+        return studentProducer;
     }
 
-    public void setMediumProducer(MediumProducer mediumProducer) {
-        this.mediumProducer = mediumProducer;
+    public void setMediumProducer(StudentProducer mediumProducer) {
+        this.studentProducer = mediumProducer;
     }
-    
     
 
     public String cancel() {
-        return Pages.ALL_MEDIA;
+        return Pages.INDEX;
     }
 }

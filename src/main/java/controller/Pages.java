@@ -10,6 +10,7 @@ package controller;
  * @author markus
  */
 public class Pages {
-public static final String ALL_MEDIA = "allMedia";
-public static final String ADD_MEDIA = "addMedia";
+public static final String ALL_STUDENTS = "allStudents";
+public static final String ADD_STUDENT = "addStudent";
+public static final String INDEX = "index";
 }

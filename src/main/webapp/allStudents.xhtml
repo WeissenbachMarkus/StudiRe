@@ -1,0 +1,89 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <body>
+        <f:view contracts="#{view.locale.language}">
+            <ui:composition template="/template.xhtml">
+                <ui:define name="content">
+                    <h1>#{msg['allStudents.h1']}</h1>
+                    <h:form>
+                        <p:dataTable value="#{students}" var="student">
+                            <p:column>
+                                <f:facet name="header">
+                                    #{msg['allStudents.delete']}
+                                </f:facet>
+                                <p:commandButton onclick="confirmation.show()"
+                                                 actionListener="#{allStudentController.toDelete(student)}"
+                                                 icon="ui-icon-close" />
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    #{msg['allStudents.matrikelnumber']}
+                                </f:facet>
+                                <h:outputText value="#{student.matrikelnumber}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    #{msg['allStudents.name']}
+                                </f:facet>
+                                <h:outputText value="#{student.firstname}">                                
+                                </h:outputText>
+                            </p:column>
+                            
+                             <p:column>
+                                <f:facet name="header">
+                                    #{msg['allStudents.lastname']}
+                                </f:facet>
+                                <h:outputText value="#{student.lastname}">                                
+                                </h:outputText>
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    #{msg['allStudents.adresse']}
+                                </f:facet>
+                                <h:outputText value="#{student.adresse}">                                
+                                </h:outputText>
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    #{msg['allStudents.postCode']}
+                                </f:facet>
+                                <h:outputText value="#{student.postCode}">                                
+                                </h:outputText>
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    #{msg['allStudents.location']}
+                                </f:facet>
+                                <h:outputText value="#{student.location}">                                
+                                </h:outputText>
+                            </p:column>
+                     
+                        </p:dataTable>
+                        <p:commandButton value=
+                                         "#{msg['allStudents.addStudent']}"
+                                         ajax="false"
+                                         action="#{allStudentController.addStudent}" />
+                        <p:confirmDialog
+                            message="#{msg['allMedia.askDeleteMedia']}"
+                            header="#{msg['allMedia.delete']}"
+                            severity="alert"
+                            widgetVar="confirmation">
+                            <p:commandButton value="#{msg['allMedia.yes']}"
+                                             oncomplete="confirmation.hide()" ajax="false"
+                                             actionListener="#{allStudentController.toDelete(student)}" />
+                            <p:commandButton value="#{msg['allMedia.no']}"
+                                             onclick="confirmation.hide()" />
+                        </p:confirmDialog>
+                    </h:form>
+                </ui:define>
+            </ui:composition>
+        </f:view>
+    </body>
+</html>

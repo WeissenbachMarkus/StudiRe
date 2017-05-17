@@ -15,50 +15,52 @@ import javax.enterprise.event.Observes;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
-import model.Medium;
-import service.IserviceMockMedia;
+import model.Student;
 import util.Events.Added;
 import util.Events.Deleted;
 import util.TestQualifier;
 import util.TestQualifier.MyService;
+import service.IserviceMockStudents;
 
 /**
  *
  * @author markus
  */
 @SessionScoped
-public class MediaList implements Serializable {
+public class StudentList implements Serializable {
 
-    private List<Medium> media;
+    private List<Student> students;
 
     @Inject
     @MyService
-    IserviceMockMedia serviceMedia;
+    IserviceMockStudents serviceMedia;
 
     @PostConstruct
     public void init() {
-        media = serviceMedia.mockMedia();
+        students = serviceMedia.mockMedia();
     }
 
-    /*  public MediaList() {
-        this.media = new ArrayList<>();
-        media.add(new Medium("Music", "CD"));
-        media.add(new Medium("Film", "DVD"));
-    }*/
     
     @Named
     @Produces
-    public List<Medium> getMedia() {
-        return media;
+    public List<Student> getStudents() {
+        return students;
+    }
+    
+    
+    @Produces
+    public int getStudentCount()
+    {
+       return students.size();
     }
     
 
-    public void addMedia(@Observes @Added Medium medium) {
-        getMedia().add(medium);
+    public void addStudent(@Observes @Added Student student) {
+        getStudents().add(student);
     }
 
-    public void removeMedia(@Observes @Deleted Medium medium) {
-        getMedia().remove(medium);
+    public void removeStudent(@Observes @Deleted Student student) {
+        getStudents().remove(student);
     }
 
 }

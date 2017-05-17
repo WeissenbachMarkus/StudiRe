@@ -7,7 +7,7 @@ package service;
 
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
-import model.Medium;
+import model.Student;
 
 
 /**
@@ -15,8 +15,8 @@ import model.Medium;
  * @author markus
  */
 @RequestScoped 
-public interface IserviceMockMedia {
+public interface IserviceMockStudents {
     
-    public List<Medium> mockMedia();
+    public List<Student> mockMedia();
     
 }

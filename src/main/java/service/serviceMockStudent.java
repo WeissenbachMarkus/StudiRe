@@ -10,7 +10,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Named;
-import model.Medium;
+import model.Student;
 import util.TestQualifier.MyService;
 
 /**
@@ -19,13 +19,13 @@ import util.TestQualifier.MyService;
  */
 @RequestScoped
 @MyService
-public class serviceMockMedia implements IserviceMockMedia {
+public class serviceMockStudent implements IserviceMockStudents {
 
     @Override
-    public List<Medium> mockMedia() {
-        List<Medium> media = new ArrayList<>();
-        media.add(new Medium("Music", "CD"));
-        media.add(new Medium("Film", "DVD"));
+    public List<Student> mockMedia() {
+        List<Student> media = new ArrayList<>();
+        media.add(new Student( 1730312, "Markus", "Weissenbach", "Ing-Ballerstr. 4", "Imst", 6460 ));
+        media.add(new Student(1730313, "Max","Muster","Straße","Ort",3333));
 
         return media;
     }
