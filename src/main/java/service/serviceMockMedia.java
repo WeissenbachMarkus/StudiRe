@@ -11,16 +11,16 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Named;
 import model.Medium;
+import util.TestQualifier.MyService;
 
 /**
  *
  * @author markus
  */
-@RequestScoped 
+@RequestScoped
+@MyService
 public class serviceMockMedia implements IserviceMockMedia {
 
-    
-    
     @Override
     public List<Medium> mockMedia() {
         List<Medium> media = new ArrayList<>();
