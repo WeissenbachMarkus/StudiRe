@@ -21,6 +21,7 @@ import util.Events.Deleted;
 import util.TestQualifier;
 import util.TestQualifier.MyService;
 import service.IserviceMockStudents;
+import service.StudentProducerService;
 
 /**
  *
@@ -33,11 +34,15 @@ public class StudentList implements Serializable {
 
     @Inject
     @MyService
-    IserviceMockStudents serviceMedia;
-
+    IserviceMockStudents serviceStudent;
+    
+    @Inject
+    StudentProducerService service;
+    
     @PostConstruct
     public void init() {
-        students = serviceMedia.mockMedia();
+        students = serviceStudent.mockStudents();
+       // students.addAll(service.getAllStudents());
     }
 
     

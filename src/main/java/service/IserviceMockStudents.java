@@ -17,6 +17,6 @@ import model.Student;
 @RequestScoped 
 public interface IserviceMockStudents {
     
-    public List<Student> mockMedia();
+    public List<Student> mockStudents();
     
 }

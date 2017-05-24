@@ -5,10 +5,9 @@
  */
 package controller;
 
-import service.StudentProducer;
+import service.StudentProducerService;
 import java.io.Serializable;
 import javax.enterprise.context.Dependent;
-import javax.enterprise.context.SessionScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -25,22 +24,21 @@ public class AddStudentController implements Serializable {
 
     @Inject
     @Added
-    private Event<Student> eventMedium;
+    private Event<Student> eventAddStudent;
 
     @Inject
-    private StudentProducer studentProducer;
+    private StudentProducerService studentProducer;
 
-    public String saveMedium() {       
-        studentProducer.setMatrikelnumber();
-        eventMedium.fire(studentProducer.getStudent());
+    public String saveStudent() {          
+        eventAddStudent.fire(studentProducer.getStudent());
         return Pages.INDEX;
     }
 
-    public StudentProducer getStudentProducer() {
+    public StudentProducerService getStudentProducer() {
         return studentProducer;
     }
 
-    public void setMediumProducer(StudentProducer mediumProducer) {
+    public void setMediumProducer(StudentProducerService mediumProducer) {
         this.studentProducer = mediumProducer;
     }
     

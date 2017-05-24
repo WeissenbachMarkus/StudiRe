@@ -71,14 +71,14 @@
                                          ajax="false"
                                          action="#{allStudentController.addStudent}" />
                         <p:confirmDialog
-                            message="#{msg['allMedia.askDeleteMedia']}"
-                            header="#{msg['allMedia.delete']}"
+                            message="#{msg['allStudents.askDeleteStudent']}"
+                            header="#{msg['allStudents.delete']}"
                             severity="alert"
                             widgetVar="confirmation">
-                            <p:commandButton value="#{msg['allMedia.yes']}"
+                            <p:commandButton value="#{msg['allStudents.yes']}"
                                              oncomplete="confirmation.hide()" ajax="false"
-                                             actionListener="#{allStudentController.toDelete(student)}" />
-                            <p:commandButton value="#{msg['allMedia.no']}"
+                                             actionListener="#{allStudentController.deleteStudent}" />
+                            <p:commandButton value="#{msg['allStudents.no']}"
                                              onclick="confirmation.hide()" />
                         </p:confirmDialog>
                     </h:form>

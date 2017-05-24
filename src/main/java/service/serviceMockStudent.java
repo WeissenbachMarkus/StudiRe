@@ -22,9 +22,9 @@ import util.TestQualifier.MyService;
 public class serviceMockStudent implements IserviceMockStudents {
 
     @Override
-    public List<Student> mockMedia() {
+    public List<Student> mockStudents() {
         List<Student> media = new ArrayList<>();
-        media.add(new Student( 1730312, "Markus", "Weissenbach", "Ing-Ballerstr. 4", "Imst", 6460 ));
+        media.add(new Student(1730312, "Markus", "Weissenbach", "Ing-Ballerstr. 4", "Imst", 6460 ));
         media.add(new Student(1730313, "Max","Muster","Straße","Ort",3333));
 
         return media;
