@@ -9,14 +9,15 @@ import data.StudentList;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Observes;
+import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-
 import model.Student;
 import util.Events.Added;
 
@@ -24,14 +25,14 @@ import util.Events.Added;
  *
  * @author markus
  */
-@RequestScoped
+@Stateless
 public class StudentProducerService implements Serializable {
 
     private Student student;
     private int year, uni, number;
 
-   /* @Inject
-    EntityManager entityManager;*/
+    @Inject
+    private EntityManager entityManager;
 
     public StudentProducerService() {
         this.student = new Student();
@@ -62,10 +63,22 @@ public class StudentProducerService implements Serializable {
         this.student = student;
     }
 
-   /* public List<Student> getAllStudents() {
+    public void addstudent(@Observes @Added Student student) {
+        System.out.println("Hey");
+        entityManager.persist(student);
+    }
+
+    public void deleteCampaign(Student student) {
+        Student managedStudent = entityManager.find(Student.class,
+                student.getMatrikelnumber());
+        entityManager.remove(managedStudent);
+    }
+
+    @Produces
+    @Named
+    public List<Student> getAllStudents() {
         TypedQuery<Student> query = entityManager.createNamedQuery(Student.findAll, Student.class);
         List<Student> students = query.getResultList();
         return students;
-    }*/
-
+    }
 }

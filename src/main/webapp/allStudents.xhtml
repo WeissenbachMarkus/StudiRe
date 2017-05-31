@@ -9,7 +9,7 @@
                 <ui:define name="content">
                     <h1>#{msg['allStudents.h1']}</h1>
                     <h:form>
-                        <p:dataTable value="#{students}" var="student">
+                        <p:dataTable value="#{allStudents}" var="student">
                             <p:column>
                                 <f:facet name="header">
                                     #{msg['allStudents.delete']}
@@ -70,6 +70,7 @@
                                          "#{msg['allStudents.addStudent']}"
                                          ajax="false"
                                          action="#{allStudentController.addStudent}" />
+                           <h:outputText value="#{output}"> </h:outputText>
                         <p:confirmDialog
                             message="#{msg['allStudents.askDeleteStudent']}"
                             header="#{msg['allStudents.delete']}"
@@ -81,7 +82,9 @@
                             <p:commandButton value="#{msg['allStudents.no']}"
                                              onclick="confirmation.hide()" />
                         </p:confirmDialog>
+                      
                     </h:form>
+                   
                 </ui:define>
             </ui:composition>
         </f:view>

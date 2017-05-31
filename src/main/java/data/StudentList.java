@@ -41,8 +41,8 @@ public class StudentList implements Serializable {
     
     @PostConstruct
     public void init() {
-        students = serviceStudent.mockStudents();
-       // students.addAll(service.getAllStudents());
+       // students = serviceStudent.mockStudents();
+       students.addAll(service.getAllStudents());
     }
 
     
@@ -61,7 +61,8 @@ public class StudentList implements Serializable {
     
 
     public void addStudent(@Observes @Added Student student) {
-        getStudents().add(student);
+      /*  System.out.println("hey");
+        getStudents().add(student);*/
     }
 
     public void removeStudent(@Observes @Deleted Student student) {

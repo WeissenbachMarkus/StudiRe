@@ -17,7 +17,7 @@ import javax.persistence.NamedQuery;
  */
 
 @NamedQueries({
-@NamedQuery(name = Student.findAll, query = "SELECT s FROM Student s ORDER BY s.name")
+@NamedQuery(name = Student.findAll, query = "SELECT s FROM Student s ORDER BY s.matrikelnumber")
 })
 
 @Entity
